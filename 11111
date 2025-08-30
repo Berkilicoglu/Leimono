@@ -1,0 +1,23 @@
+let currentStream = null;
+let useFront = false; // ✅ başlangıçta arka kamera
+
+async function startCamera() {
+  stopCamera();
+  const constraints = {
+    video: {
+      facingMode: useFront ? 'user' : 'environment',
+      width: { ideal: 1920 },
+      height: { ideal: 1080 }
+    },
+    audio: false
+  };
+  try {
+    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+    video.srcObject = currentStream;
+    await video.play();
+    resizeCanvas();
+    renderLoop();
+  } catch (e) {
+    alert('Kamera erişimi gerekiyor: ' + e.message);
+  }
+}
