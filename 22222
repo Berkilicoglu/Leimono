@@ -1,0 +1,16 @@
+canvas.addEventListener('click', async (e) => {
+  if (!currentStream) return;
+  const track = currentStream.getVideoTracks()[0];
+  const capabilities = track.getCapabilities();
+  const settings = track.getSettings();
+
+  if (capabilities.focusMode && capabilities.focusMode.includes("single-shot")) {
+    try {
+      await track.applyConstraints({
+        advanced: [{ focusMode: "single-shot" }]
+      });
+    } catch(err) {
+      console.log("Odak ayarı başarısız:", err);
+    }
+  }
+});
