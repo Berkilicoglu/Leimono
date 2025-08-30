@@ -1,0 +1,19 @@
+.controls {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px 14px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);
+}
+
+.controls .row {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
